@@ -8,7 +8,7 @@ interface ErroProps {
 
 interface UseMercadoPagoProps {
     publicKey: string;
-    locale?: string;
+    locale?: 'es-AR' | 'es-CL' | 'es-CO' | 'es-MX' | 'es-VE' | 'es-UY' | 'es-PE' | 'pt-BR' | 'en-US';
     setError?: (error: ErroProps) => void;
 }
 
@@ -86,12 +86,10 @@ function useMercadoPago({ publicKey, locale = 'pt-BR', setError }: UseMercadoPag
                     id: paymentMethods?.issuer.id,
                     name: paymentMethods?.issuer.name
                 });
-
-                await getInstallments({ bin: cardFirstSixDigit, price: amount });
             }
         } catch (err) {
             if (typeof setError === 'function') {
-                setError({ field: 'cardNumber', message: 'Invalid card number' });
+                setError({ field: 'card_number', message: 'Invalid card number' });
                 return;
             }
 
