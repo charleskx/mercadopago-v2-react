@@ -39,6 +39,8 @@ function useMercadoPago({ publicKey, locale = 'pt-BR', setError }: UseMercadoPag
     const [cardFlag, setCardFlag] = useState<CardFlagProps>({} as CardFlagProps);
     const [issuer, setIssuer] = useState<IssuerProps>({} as IssuerProps);
     const [amount, setAmount] = useState('');
+    const [months, setMonths] = useState<OptionsProps[]>([]);
+    const [years, setYears] = useState<OptionsProps[]>([]);
 
     async function getIdentificationTypes() {
         const identificationTypes = await mercadopago.getIdentificationTypes().then((response) => response.map((type) => ({ label: type.name, value: type.id })));
@@ -123,6 +125,25 @@ function useMercadoPago({ publicKey, locale = 'pt-BR', setError }: UseMercadoPag
         }
     }
 
+    function getExpirationMonth() {
+        const items = new Array(12).fill(true).map((_, index) => ({
+            label: String(index + 1),
+            value: String(index + 1)
+        }));
+
+        setMonths(items);
+    }
+
+    function getExpirationYears() {
+        const currentYear = new Date().getFullYear();
+        const items = new Array(16).fill(true).map((_, index) => ({
+            label: String(currentYear + index),
+            value: String(currentYear + index)
+        }));
+
+        setYears(items);
+    }
+
     useEffect(() => {
         const script = document.createElement('script');
         script.src = 'https://sdk.mercadopago.com/js/v2';
@@ -147,6 +168,8 @@ function useMercadoPago({ publicKey, locale = 'pt-BR', setError }: UseMercadoPag
     useEffect(() => {
         if (mercadopago) {
             getIdentificationTypes();
+            getExpirationMonth();
+            getExpirationYears();
         }
     }, [mercadopago]);
 
@@ -157,7 +180,9 @@ function useMercadoPago({ publicKey, locale = 'pt-BR', setError }: UseMercadoPag
         issuer,
         createToken,
         setAmountValue,
-        checkCardDigits
+        checkCardDigits,
+        months,
+        years
     };
 }
 
