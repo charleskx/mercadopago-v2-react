@@ -1,0 +1,27 @@
+{
+  "name": "mercadopago-v2-react",
+  "version": "0.1.0",
+  "description": "A hook to make the Mercado Pago SDK v2 easier to use",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rm -rf dist/ && prettier --write src/ && npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "stc --module CommonJS --outDir dist/cjs"
+  },
+  "repository": "https://github.com/charleskx/mercadopago-v2-react",
+  "author": "Charleston Amaral <charleston.silva03@gmail.com> (https://charlestonamaral.com.br)",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "@types/node": "^18.7.1",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^4.7.4"
+  }
+}
