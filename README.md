@@ -4,10 +4,6 @@
 
 <p align="center">Very easy to use!</p>
 
-<div align="center">
-[![npm](https://img.shields.io/npm/v/mercadopago-v2-react/core.svg?color=%238257E5&style=for-the-badge)](https://www.npmjs.com/package/mercadopago-v2-react/core)
-</div>
-
 # SDK Mercado Pago v2 for React
 
 A hook to make the Mercado Pago SDK v2 easier to use
