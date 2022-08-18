@@ -1,6 +1,6 @@
 {
     "name": "mercadopago-v2-react",
-    "version": "1.1.0",
+    "version": "1.2.1",
     "description": "A hook to make the Mercado Pago SDK v2 easier to use",
     "main": "dist/cjs/index.js",
     "module": "dist/esm/index.js",

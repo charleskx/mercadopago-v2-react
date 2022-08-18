@@ -192,6 +192,12 @@ function useMercadoPago({ publicKey, locale = 'pt-BR', setError }: UseMercadoPag
     };
 }
 
+function formatBankSlipNumber(value: string) {
+    const data = value.replace(/(\d{5})(\d{5})(\d{5})(\d{6})(\d{5})(\d{6})(\d{1})/, '$1.$2 $3.$4 $5.$6 $7 ');
+
+    return data;
+}
+
 function isValidCPF(strCPF: string) {
     var Soma;
     var Resto;
@@ -232,4 +238,4 @@ function isValidCPF(strCPF: string) {
     return true;
 }
 
-export { useMercadoPago, isValidCPF };
+export { useMercadoPago, isValidCPF, formatBankSlipNumber };
