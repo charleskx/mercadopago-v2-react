@@ -133,8 +133,8 @@ function useMercadoPago({ publicKey, locale = 'pt-BR', setError }: UseMercadoPag
 
     function getExpirationMonth() {
         const items = new Array(12).fill(true).map((_, index) => ({
-            label: String(index + 1),
-            value: String(index + 1)
+            label: String(index + 1).padStart(2, '0'),
+            value: String(index + 1).padStart(2, '0')
         }));
 
         setMonths(items);
@@ -239,3 +239,4 @@ function isValidCPF(strCPF: string) {
 }
 
 export { useMercadoPago, isValidCPF, formatBankSlipNumber };
+
